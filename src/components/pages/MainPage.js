@@ -13,6 +13,8 @@ class MainPage extends React.Component {
             <div className="list-books-content">
               <div>
                 
+              <Shelf />
+              <Shelf />
               <Shelf />  
               
               </div>
