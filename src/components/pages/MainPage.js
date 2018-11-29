@@ -13,7 +13,8 @@ class MainPage extends React.Component {
             <div className="list-books-content">
               <div>
                 
-                
+              <Shelf />  
+              
               </div>
             </div>
             <div className="open-search">
