@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import * as BooksAPI from '../../BooksAPI'
 
+import Book from '../Book';
 
 
 class SearchPage extends React.Component {
@@ -18,7 +19,6 @@ class SearchPage extends React.Component {
     componentDidMount() {
         BooksAPI.getAll()
         .then(resp => {
-            console.log(resp);
             this.setState({ books: resp });
         });
     }
@@ -32,11 +32,16 @@ class SearchPage extends React.Component {
             return this.setState({ results: [] });
         }
         BooksAPI.search(this.state.query.trim()).then(res => {
-            console.log(res);
             if (res.error) {
                 return this.setState({ results: [] });
             }
             else {
+                res.forEach(b => {
+                    let f = this.state.books.filter(B => B.id === b.id);
+                    if(f[0]) {
+                        b.shelf = f[0].shelf;
+                    }
+                });
                 return this.setState({ results: res });
             }
         });
@@ -64,10 +69,11 @@ class SearchPage extends React.Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
-              {
-                  this.state.results.map((item, key) => <Book key={key} book={item} />) 
-              }
+              <ol className="books-grid">
+                {
+                  this.state.results.map((book, key) => <Book updateBook={this.updateBook} book={book} key={key} />) 
+                }
+              </ol>
             </div>
           </div>
         );
