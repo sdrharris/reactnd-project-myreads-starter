@@ -65,6 +65,9 @@ class SearchPage extends React.Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid"></ol>
+              {
+                  this.state.results.map((item, key) => <Book key={key} book={item} />) 
+              }
             </div>
           </div>
         );
