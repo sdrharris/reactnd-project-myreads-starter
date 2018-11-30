@@ -10,7 +10,8 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
             books: [],
-            results: []
+            results: [], 
+            query: ""
         }
     }
 
