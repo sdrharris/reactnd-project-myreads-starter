@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 class Book extends React.Component {
+    componentDidMount() {
+        console.log(this);
+    }
+
     render() {
         return (
             <li>
@@ -21,7 +25,7 @@ class Book extends React.Component {
                   </div>
                 </div>
                 <div className="book-title">The Hobbit</div>
-                <div className="book-authors">J.R.R. Tolkien</div>
+                <div className="book-authors">{this.props.book.authors[e] || "No Author..."}</div>
               </div>
             </li>
         );
