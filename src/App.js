@@ -10,10 +10,6 @@ import MainPage from './components/pages/MainPage';
 import SearchPage from './components/pages/SearchPage';
 
 class BooksApp extends React.Component {
-  updateBook(book, shelf) {
-
-  }
-
   render() {
     return(
       <div>
