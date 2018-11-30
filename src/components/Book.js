@@ -8,6 +8,13 @@ class Book extends React.Component {
         console.log(this);
     }
 
+    updateBook(book, shelf) {
+        BooksAPI.update(book, shelf)
+        .then(resp => {
+          book.shelf === shelf;
+        });
+      }
+
     render() {
         return (
             <li>
